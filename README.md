@@ -1,15 +1,19 @@
 # Build an Independent Audit Logging Service with CQRS Pattern
 
 Logs are playing an important role for any modern commercial applications. With logs,
-- 市场营销部门可以分析了解客户行为模式并预测市场风向
-- 客户服务部门可以针对投诉查询相关历史信息
-- 技术人员可以更快速定位甚至提前了解系统缺陷
+- Marketing Dept is able to analyze clients' behaviours and predict the market
+- Customer Service Dept is able to search relevant history information for complaints
+- Technical staffs are able to figure out where the defects come from with technical details
 
-Furtunately, 几乎每种开发语言都有自己的日志库；而且，几乎所有云服务提供商都提供有基于云端的日志系统和在线分析系统。使用这些已有的开发库和云服务，开发者可以轻松输出日志。
+Furtunately, logging libraries already exist for most of the popular programming languages. Azure, AWS, GCP are all providing excellent cloud-based logging services. Developers can easily output their logs with these existing libraries or services.
 
-However, 但现实总是很复杂的。有的团队使用云端日志系统，却因为配置不当导致巨额开销或者系统性能下降；有的团队使用本地日志文件，却不得不登录到每个服务器上查找；有的使用本地数据库，却因为数据量太大导致业务数据库快速增长，或者后台数据查询影响了核心业务的响应速度。
+However, things might be complex in practice. 
+- Some teams have to pay too much for cloud logging services just because of improper configurations. 
+- Some teams are still trying to log on every server instance to find out how a payment transaction failed. 
+- Some teams have to pay for huge database backups for their rapidly increasing database while 95% of them are logs.
+- Some teams run complex queries from log databases which takes seconds every time and then impact their core business services.
 
-Therefore, 在决定采用何种方案之前，最重要的事情是了解自身系统的需求。否则，要么花钱买了不需要的服务，要么自己造轮子做了一堆花点小钱就能解决的事情。
+Just as everyone knows, the most important thing is to know the actual requirements before the decison is made. Nobody wants to pay a lot for useless services, or reinvent wheels with lots of efforts.
 
 I'm not going to talk about any actual requirements and the relevant solutions. Actually, I just want to focus techniques. In other words, this is just trying some new architecture patterns which probably could be used in other systems in future:
 -	CQRS pattern
