@@ -1,8 +1,11 @@
 version: '2'
 
+# https://hub.docker.com/r/bitnami/rabbitmq
+# docker exec -it rabbitmq bash
 services:
-  rabbitmq: # https://hub.docker.com/r/bitnami/rabbitmq
-    image: docker.io/bitnami/rabbitmq:3.10
+  rabbitmq:
+    container_name: rabbitmq
+    image: bitnami/rabbitmq:3.10
     ports:
       - '4369:4369'
       - '5551:5551'
@@ -15,6 +18,12 @@ services:
       - RABBITMQ_LOGS=-
     volumes:
       - 'rabbitmq_data:/bitnami/rabbitmq/mnesia'
+      - type: bind
+        source: ./rabbitmq.config
+        target: /etc/rabbitmq/rabbitmq.config
+      - type: bind
+        source: ./rabbitmq-defs.json
+        target: /etc/rabbitmq/rabbitmq-defs.json
 volumes:
   rabbitmq_data:
     driver: local

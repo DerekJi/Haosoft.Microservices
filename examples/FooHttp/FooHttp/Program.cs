@@ -1,3 +1,4 @@
+using Hulu.Audit.Rabbitmq;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Register Hulu Services
+var rabbitMqConfigs = new RabbitMqConfiguration();
+var configuration = builder.Configuration.GetSection(RabbitMqConfiguration.KeyName);
+configuration.Bind(rabbitMqConfigs);
+builder.Services.Configure<RabbitMqConfiguration>(configuration);
+builder.Services.UseAuditRabbitMQ(rabbitMqConfigs);
+
 
 var app = builder.Build();
 

@@ -1,4 +1,7 @@
+using System.Text;
+using Hulu.Audit.Rabbitmq;
 using Microsoft.AspNetCore.Mvc;
+using RabbitMQ.Client;
 
 namespace FooHttp.Controllers;
 [ApiController]
@@ -11,10 +14,12 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILoggingService _service;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, ILoggingService service)
     {
         _logger = logger;
+        _service = service;
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
@@ -28,5 +33,13 @@ public class WeatherForecastController : ControllerBase
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
+    }
+
+    [HttpPost(Name = "Message")]
+    public ActionResult PublishMessage(string message)
+    {
+        _service.Publish(message);
+
+        return Ok();
     }
 }

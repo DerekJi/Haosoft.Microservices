@@ -1,0 +1,75 @@
+{
+  "users": [
+    {
+      "name": "guest",
+      "password_hash": "SrzHhw1bDr4+dziGLzAjNL/ulsOA5NUog1SemkyNztJuG//q",
+      "tags": "administrator"
+    },
+    {
+      "name": "user",
+      "password_hash": "zr5d/tuXKO4I2Y1QTZKPR5qkMW5C1IeQmmzC4M4Gngwl3U6p",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    },
+    {
+      "name": "hulu"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "guest",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "user",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "user",
+      "vhost": "hulu",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "hulu.logging",
+      "vhost": "hulu",
+      "type": "fanout",
+      "durable": false,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "queues": [
+    {
+      "name": "hulu.logs",
+      "vhost": "hulu",
+      "durable": false,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "hulu.logs",
+      "vhost": "hulu",
+      "destination": "hulu.logs",
+      "destination_type": "queue",
+      "routing_key": "audit",
+      "arguments": {}
+    }
+  ]
+}

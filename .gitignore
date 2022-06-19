@@ -1,6 +1,7 @@
 .vs
 bin
 obj
+appsettings.Development.json
 logs
 node_modules
 .idea/
