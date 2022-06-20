@@ -1,14 +1,22 @@
 <Project>
- <PropertyGroup>
-    <LangVersion>10.0</LangVersion>
-	<TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PlatformTarget>x64</PlatformTarget>
+    <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'">
+    <LangVersion>10</LangVersion>
     <Nullable>enable</Nullable>
- </PropertyGroup>
- <ItemGroup>
-    <PackageReference Include="IsExternalInit" Version="1.0.1">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+	<ImplicitUsings>enable</ImplicitUsings>
+    <noWarn>1572;1591</noWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="SourceLink.Copy.PdbFiles" Version="2.8.*" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UsingMicrosoftNETSdkWeb)' == ''">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 </Project>

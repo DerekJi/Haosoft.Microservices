@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FooHttp", "FooHttp\FooHttp.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{BA141C29-A554-460B-BE4E-AE2F214F3189}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hulu.Audit.Abstractions", "..\..\libraries\src\Hulu.Audit.Abstractions\Hulu.Audit.Abstractions.csproj", "{ECAB4653-F5DC-4F84-8A3E-6F2741FC0E0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hulu.Audit.Abstractions", "..\..\backend\src\Hulu.Audit.Abstractions\Hulu.Audit.Abstractions.csproj", "{ECAB4653-F5DC-4F84-8A3E-6F2741FC0E0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hulu.Audit.Rabbitmq", "..\..\libraries\src\Hulu.Audit.Rabbitmq\Hulu.Audit.Rabbitmq.csproj", "{C46A6D5B-5DFD-46EF-9481-245B0D35BD8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hulu.Audit.Rabbitmq", "..\..\backend\src\Hulu.Audit.Rabbitmq\Hulu.Audit.Rabbitmq.csproj", "{C46A6D5B-5DFD-46EF-9481-245B0D35BD8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
