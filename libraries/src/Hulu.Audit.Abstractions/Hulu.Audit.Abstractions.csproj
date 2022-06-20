@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System.Text" />
+		<Using Include="System.Text.Json" />
+		<Using Include="Microsoft.Extensions.DependencyInjection" />
+	</ItemGroup>
+</Project>

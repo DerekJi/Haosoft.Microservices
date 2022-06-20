@@ -14,12 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Register Hulu Services
-var rabbitMqConfigs = new RabbitMqConfiguration();
-var configuration = builder.Configuration.GetSection(RabbitMqConfiguration.KeyName);
-configuration.Bind(rabbitMqConfigs);
-builder.Services.Configure<RabbitMqConfiguration>(configuration);
-builder.Services.UseAuditRabbitMQ(rabbitMqConfigs);
-
+builder
+    .UseRabbitmqOptions()
+    .UseAuditRabbitMQ();
 
 var app = builder.Build();
 

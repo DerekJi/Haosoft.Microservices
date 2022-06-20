@@ -8,10 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="RabbitMQ.Client" Version="6.4.*" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Serilog" Version="2.11.*" />
-	  <PackageReference Include="serilog.aspnetcore" Version="4.1.*" />
-	  <PackageReference Include="serilog.expressions" Version="3.2.*" />
+	<PackageReference Include="Serilog.AspnetCore" Version="4.1.*" />
+	<PackageReference Include="Serilog.Expressions" Version="3.2.*" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.3.*" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.0.*" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.*" />
@@ -20,6 +23,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\libraries\Hulu.Audit.Rabbitmq\Hulu.Audit.Rabbitmq\Hulu.Audit.Rabbitmq.csproj" />
+    <ProjectReference Include="..\..\..\libraries\src\Hulu.Audit.Abstractions\Hulu.Audit.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\libraries\src\Hulu.Audit.Rabbitmq\Hulu.Audit.Rabbitmq.csproj" />
   </ItemGroup>
 
 </Project>

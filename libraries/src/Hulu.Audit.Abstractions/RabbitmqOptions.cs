@@ -1,6 +1,6 @@
-﻿namespace Hulu.Audit.Rabbitmq;
+﻿namespace Hulu.Audit.Abstractions;
 
-public class RabbitMqConfiguration
+public class RabbitmqOptions
 {
     public static string KeyName { get; } = "RabbitMQ";
     public string HostName { get; init; } = string.Empty;
